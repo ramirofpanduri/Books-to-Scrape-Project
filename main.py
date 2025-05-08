@@ -26,5 +26,22 @@ for cat in category_list:
 
 
 for name, link in categories:
-    print(f"Category: {name}")
+    print(f"\n Category: {name}")
     page_number = 1
+
+    while True:
+        if page_number == 1:
+            page_url = link
+        else:
+            page_url = link.replace("index.html", f"page-{page_number}.html")
+
+        res = requests.get(page_url)
+        if res.status_code == 200:
+            break
+
+        page_soup = BeautifulSoup(res.text, "html.parser")
+        books = page_soup.select("article.product_pod")
+
+        for book in books:
+            title = book.h3.a["title"]
+            price = book.select_one("p.price_color").text
