@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 url = "https://books.toscrape.com/"
 
-star_numbers = {
+star_map = {
     "One": 1,
     "Two": 2,
     "Three": 3,
@@ -47,3 +47,8 @@ for name, link in categories:
             price = book.select_one("p.price_color").text
 
             star_tag = book.select_one("p.star-rating")
+            star_classes = star_tag.get("class", [])
+            star_text = [c for c in star_classes if c != "star-rating"][0]
+            stars = star_map.get(star_text, 0)
+
+            print(f"  - {title} | {price} | Estrellas: {stars}")
