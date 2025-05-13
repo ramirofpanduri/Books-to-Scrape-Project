@@ -45,3 +45,5 @@ for name, link in categories:
         for book in books:
             title = book.h3.a["title"]
             price = book.select_one("p.price_color").text
+
+            star_tag = book.select_one("p.star-rating")
