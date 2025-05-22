@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import time
 
 url = "https://books.toscrape.com/"
 
@@ -36,7 +37,8 @@ for name, link in categories:
             page_url = link.replace("index.html", f"page-{page_number}.html")
 
         res = requests.get(page_url)
-        if res.status_code == 200:
+        time.sleep(1)
+        if res.status_code != 200:
             break
 
         page_soup = BeautifulSoup(res.text, "html.parser")
@@ -52,3 +54,5 @@ for name, link in categories:
             stars = star_map.get(star_text, 0)
 
             print(f"  - {title} | {price} | Estrellas: {stars}")
+
+        page_number += 1
