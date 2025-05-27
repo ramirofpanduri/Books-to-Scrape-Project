@@ -39,8 +39,12 @@ category_id_map = {}
 for name, link in categories:
     cursor.execute("INSERT IGNORE INTO categories WHERE name  = %s", (name,))
     conn.commit()
+
+    cursor.execute("SELECT id FROM categories WHERE name = %s", (name,))
     print(f"\n Category: {name}")
     page_number = 1
+
+
 
     while True:
         if page_number == 1:
