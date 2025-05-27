@@ -1,6 +1,15 @@
 import requests
 from bs4 import BeautifulSoup
 import time
+import _mysql_connector
+
+conn = _mysql_connector.connect(
+    host="localhost",
+    user="root",
+    password="password",
+    database="books_scrape"
+)
+cursor = conn.cursor()
 
 url = "https://books.toscrape.com/"
 
@@ -12,7 +21,7 @@ star_map = {
     "Five": 5
 }
 
-response = requests.get(url)
+response = requests.get(url, timeout=2)
 soup = BeautifulSoup(response.text, "html.parser")
 
 full_article = soup.select("article.product_pod")
@@ -25,8 +34,11 @@ for cat in category_list:
     full_link = url + relative_link
     categories.append((name, full_link))
 
+category_id_map = {}
 
 for name, link in categories:
+    cursor.execute("INSERT IGNORE INTO categories WHERE name  = %s", (name,))
+    conn.commit()
     print(f"\n Category: {name}")
     page_number = 1
 
@@ -36,7 +48,7 @@ for name, link in categories:
         else:
             page_url = link.replace("index.html", f"page-{page_number}.html")
 
-        res = requests.get(page_url)
+        res = requests.get(page_url, timeout=2)
         time.sleep(1)
         if res.status_code != 200:
             break
