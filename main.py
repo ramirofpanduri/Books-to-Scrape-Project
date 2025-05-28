@@ -21,7 +21,7 @@ star_map = {
     "Five": 5
 }
 
-response = requests.get(url, timeout=2)
+response = requests.get(url, timeout=20)
 soup = BeautifulSoup(response.text, "html.parser")
 
 full_article = soup.select("article.product_pod")
@@ -54,7 +54,7 @@ for name, link in categories:
         else:
             page_url = link.replace("index.html", f"page-{page_number}.html")
 
-        res = requests.get(page_url, timeout=2)
+        res = requests.get(page_url, timeout=20)
         time.sleep(1)
         if res.status_code != 200:
             break
