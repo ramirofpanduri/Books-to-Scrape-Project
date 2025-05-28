@@ -41,10 +41,12 @@ for name, link in categories:
     conn.commit()
 
     cursor.execute("SELECT id FROM categories WHERE name = %s", (name,))
-    print(f"\n Category: {name}")
+    category_id = cursor.fetchone()[0]
+    category_id_map[name] = category_id
+
+    print(f"\n Category: {name} (ID: {category_id})")
+
     page_number = 1
-
-
 
     while True:
         if page_number == 1:
