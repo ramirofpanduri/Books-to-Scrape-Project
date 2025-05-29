@@ -7,6 +7,7 @@ name = "pypi"
 requests = "*"
 beautifulsoup4 = "*"
 mysql-connector-python = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
