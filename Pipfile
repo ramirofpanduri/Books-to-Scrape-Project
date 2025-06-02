@@ -8,6 +8,7 @@ requests = "*"
 beautifulsoup4 = "*"
 mysql-connector-python = "*"
 python-dotenv = "*"
+flask = "*"
 
 [dev-packages]
 
