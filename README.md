@@ -1,4 +1,4 @@
-# Books to Scrape - Web Scraper + REST API + Automation
+# Books to Scrape - Web Scraper + Automation
 
 This project collects book data from [books.toscrape.com](https://books.toscrape.com/), saves it to a MySQL database, and provides a REST API using Flask. The scraper runs automatically every 24 hours using APScheduler.
 

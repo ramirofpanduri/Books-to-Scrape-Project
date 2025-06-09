@@ -16,3 +16,4 @@ def get_categories(url):
         relative_link = cat["href"]
         full_link = url + relative_link
         categories.append((name, full_link))
+    return categories
