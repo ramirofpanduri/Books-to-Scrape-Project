@@ -19,7 +19,7 @@ It is necessary to create a virtual environment for the scraper to work. Pipenv 
 
 ```bash
 # Clone the repository
-git clone https://github.com/user/Scraper-Project-HF.git
+git clone https://github.com/ramirofpanduri/Scraper-Project-HF.git
 cd Scraper-Project-HF
 
 # Install dependencies using Pipenv
