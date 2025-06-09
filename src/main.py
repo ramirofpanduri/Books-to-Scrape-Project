@@ -1,6 +1,6 @@
-from scraper.database import get_db_connection
 from scraper.categories import get_categories
 from scraper.books import scrape_books_category
+from connection.database import get_db_connection
 
 url = "http://books.toscrape.com/"
 

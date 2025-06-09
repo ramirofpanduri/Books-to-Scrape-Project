@@ -10,5 +10,5 @@ scheduler = BlockingScheduler()
 scheduler.add_job(run_main, 'interval', hours=12)
 
 if __name__ == "__main__":
-    print("Scheduler started. It will run every 10 hours.")
+    print("Scheduler started. It will run every 12 hours.")
     scheduler.start()
